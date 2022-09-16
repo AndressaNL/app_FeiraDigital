@@ -1,5 +1,6 @@
-import React from "react";
-import { Image } from "react-native";
+import React, { useState } from "react";
+import auth from '@react-native-firebase/auth';
+import { Image, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { 
     Container,
@@ -11,17 +12,31 @@ import {
     SignMessageButtonTextBold
  } from './styles';
 
-import SignInput from "../../components/SignInput";
-import SignInput2 from "../../components/SignInput2";
-import SignInput1 from "../../components/SignInput1";
 
 export default () => {
     const navigation = useNavigation();
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+
 
     const handleSignClick = () =>{
-        navigation.reset({
-            routes: [{name: 'MainTab'}]
-        });
+
+        auth()
+          .createUserWithEmailAndPassword(email,password)
+          .then(() => {
+            console.log('User account created & signed in!');
+          })
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              console.log('That email address is already in use!');
+            }
+        
+            if (error.code === 'auth/invalid-email') {
+              console.log('That email address is invalid!');
+            }
+        
+            console.error(error);
+          });
     }
 
     const handleMessageButtonClick = () => {
@@ -35,10 +50,30 @@ export default () => {
             <Image width="100%" height="160" source={require("../../assets/Logo4.png")}/>
 
             <InputArea>
-                <SignInput1/>
-                <SignInput />
-                <SignInput2 />
-
+            <TextInput
+             style={{
+              backgroundColor: '#53bda2',
+              width: '100%',
+              height: 60,
+              borderRadius: 30,
+              marginBottom: 15,
+             alignItems: 'center',
+             }}
+             placeholder="Digite seu e-mail"
+             onChangeText={setEmail}
+             />
+             <TextInput
+             style={{
+              backgroundColor: '#53bda2',
+              width: '100%',
+              height: 60,
+              borderRadius: 30,
+              marginBottom: 15,
+             alignItems: 'center',
+             }}
+             placeholder="Digite sua senha"
+             onChangeText={setPassword}
+             />
                 <CustomButton onPress={handleSignClick}>
                     <CustomButtonText>CADASTRAR</CustomButtonText>
                 </CustomButton>

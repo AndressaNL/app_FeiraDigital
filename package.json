@@ -12,6 +12,8 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/geolocation": "^2.1.0",
+    "@react-native-firebase/app": "^15.4.0",
+    "@react-native-firebase/auth": "^15.4.0",
     "@react-navigation/bottom-tabs": "^6.3.2",
     "@react-navigation/material-bottom-tabs": "^6.2.2",
     "@react-navigation/native": "^6.0.11",

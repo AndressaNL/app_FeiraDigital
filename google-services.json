@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "193633975532",
+    "project_id": "appfeiradigital",
+    "storage_bucket": "appfeiradigital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193633975532:android:dd4112c4bdd31fa184f9c9",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193633975532-0d8i2tr4uf6ujcahlv3a1v49l7jqftjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCECBCSAvx-5yu2o2wetet_caCoHFAcebM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193633975532-0d8i2tr4uf6ujcahlv3a1v49l7jqftjb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
