@@ -8,17 +8,20 @@ import MainTab from "../stacks/MainTab";
 
 const Stack = createNativeStackNavigator();
 
-export default () => (
+export default props => {
+    return(
     <Stack.Navigator
         initialRouteName="Preload"
-        screenOptions={{
-            headerShown: false,
-        }}
-    >
+        screenOptions={screenOptions}
+         >
         <Stack.Screen name="Preload" component={Preload} />
         <Stack.Screen name="SignIn" component={SignIn}/>
         <Stack.Screen name="SignUp" component={SignUp}/>
         <Stack.Screen name="MainTab" component={MainTab} />
     </Stack.Navigator>
-);
+    )
+}
+const screenOptions = {
+    headerShown: false,
+}
 
