@@ -42,7 +42,8 @@ const Home = () => {
  
     return (
         <Container>
-            <ScrollView 
+            <ScrollView
+                nestedScrollEnabled={true} style={{ width: "100%" }}  
                 scrollEventThrottle={16}
             >
                 <SafeAreaView style={{ flex: 1 , paddingTop: 20}}>
@@ -87,8 +88,8 @@ const Home = () => {
                         Frutas, Verduras e Legumes
                     </Text>
                     <View style={{marginLeft:15, marginTop:10, marginRight:15}}>
+                    <ScrollView horizontal={true} style={{ width: "100%" }}>
                      <FlatList 
-                       showsVerticalScrollIndicator={false} 
                        columnWrapperStyle={{justifyContent: 'space-between'}}  
                        numColumns={2} 
                        contentContainerStyle={{
@@ -98,6 +99,7 @@ const Home = () => {
                        data={plants} 
                        renderItem={({item}) => <Card plant={item} />}
                      />
+                     </ScrollView>
                     </View>
                 </SafeAreaView>
             </ScrollView>
