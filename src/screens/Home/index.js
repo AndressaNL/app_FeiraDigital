@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, SafeAreaView, Image, ScrollView, StyleSheet, Dimensions, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, Image, ScrollView, StyleSheet, Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import { Container } from './styles';
+import { useNavigation } from '@react-navigation/native';
 import COLORS from "../../consts/colors";
 import plants from "../../consts/plants";
 
@@ -8,7 +9,13 @@ const {width} = Dimensions.get('window');
 
 
 const Card = ({plant}) => {
-    return <View style={{ borderRadius:10,marginHorizontal:2,marginBottom:5,padding:15, height:200, backgroundColor: COLORS.green, width: width/2-15, }}>
+
+    const navigation = useNavigation();
+    
+    return (
+        
+    <TouchableOpacity  onPress={()=>navigation.navigate("Details",plant)}>
+    <View style={{ borderRadius:10,marginHorizontal:2,marginBottom:5,padding:15, height:200, backgroundColor: COLORS.green, width: width/2-15, }}>
         <View style={{height:100, alignItems: 'center'}}>
             <Image 
             style={{flex:1, resizeMode: 'contain'}} 
@@ -37,9 +44,10 @@ const Card = ({plant}) => {
          </View>
         </View>
     </View>
-}
-const Home = () => {
- 
+    </TouchableOpacity>
+    );
+};
+const Home = ({}) => {
     return (
         <Container>
             <ScrollView
@@ -87,6 +95,7 @@ const Home = () => {
                     <Text style={{fontSize: 16, fontWeight: '700', paddingHorizontal: 15, color: '#343F4B'}}>
                         Frutas, Verduras e Legumes
                     </Text>
+
                     <View style={{marginLeft:15, marginTop:10, marginRight:15}}>
                     <ScrollView horizontal={true} style={{ width: "100%" }}>
                      <FlatList 
@@ -102,8 +111,7 @@ const Home = () => {
                      </ScrollView>
                     </View>
                 </SafeAreaView>
-            </ScrollView>
-            
+            </ScrollView>           
         </Container>
     );
 }
