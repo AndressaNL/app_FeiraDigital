@@ -1,14 +1,13 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
 import UserContextProvider from './src/contexts/UserContext';
-import MainStack from './src/stacks/MainStack';
-import COLORS from "./src/consts/colors";
+import {MainStack} from './src/stacks/MainStack';
 
-export default () => {
-  return(
+export function App() {
+  return (
     <UserContextProvider>
-     <NavigationContainer>
-         <MainStack />
+      <NavigationContainer>
+        <MainStack />
       </NavigationContainer>
     </UserContextProvider>
   );
