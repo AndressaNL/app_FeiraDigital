@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { Container } from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -7,8 +7,18 @@ import PLANTS from "../../consts/plants";
 import MainTab from '../../stacks/MainTab';
 
 
-
 const  Details = ({navigation, route}) => {
+
+    const [addProducts, setAddProducts] = useState(1);
+
+    const handleAddProducts = () => {
+        setAddProducts(addProducts+1)
+    }
+
+    const handleRemoveProducts = () => {
+        setAddProducts(addProducts-1)
+    }
+
     const plant = route.params;
 
     const navigate = useNavigation();
@@ -27,7 +37,7 @@ const  Details = ({navigation, route}) => {
              </TouchableOpacity>
             </View>
             <View style={style.imageContainer}>
-                <Image source={plant.img}  style={{resizeMode: 'contain', flex: 1}}/>
+                <Image source={{uri: plant.ImageProduct[0].path}}  style={{resizeMode: 'contain', flex: 1}}/>
             </View>
             <View style={style.detailsContainer}>
                 <View style={{marginLeft:20,
@@ -62,11 +72,11 @@ const  Details = ({navigation, route}) => {
                     <View style={{marginTop:20, flexDirection:"row", justifyContent: 'space-between'}}>
                         <View style={{flexDirection: "row", alignItems: "center"}}>
                             <View style={style.borderBtn}>
-                                <Text style={style.borderBtnText}>-</Text>
+                                <Text style={style.borderBtnText} onPress={handleRemoveProducts}>-</Text>
                             </View>
-                            <Text style={{fontSize:20, marginHorizontal:10, fontWeight: "bold"}}>1</Text>
+                            <Text style={{fontSize:20, marginHorizontal:10, fontWeight: "bold"}}>{addProducts}</Text>
                             <View style={style.borderBtn}>
-                                <Text style={style.borderBtnText}>+</Text>
+                                <Text style={style.borderBtnText} onPress={handleAddProducts}>+</Text>
                             </View>
                         </View>
                         <View style={style.buyBtn}>
@@ -130,7 +140,7 @@ const style = StyleSheet.create({
     },
     borderBtnText:{
         fontWeight: 'bold',
-        fontSize: 28,
+        fontSize: 32,
     },
     buyBtn: {
         width:150,

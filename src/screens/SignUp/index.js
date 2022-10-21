@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import auth from '@react-native-firebase/auth';
-import { Image, TextInput } from "react-native";
+import { AppRegistry, Image, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import {api} from "../../Services/Api"
 import { 
     Container,
     InputArea,
@@ -15,30 +16,17 @@ import {
 
 export default () => {
     const navigation = useNavigation();
+    const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
 
-    const handleSignClick = () =>{
+    const handleSignClick = async() =>{
+       api.post("/buyer", {
+        name, email, password
+      }).then(response => {console.log(response.data)})
 
-        auth()
-          .createUserWithEmailAndPassword(email,password)
-          .then(() => {
-            console.log('User account created & signed in!');
-          })
-          .catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
-              console.log('That email address is already in use!');
-            }
-        
-            if (error.code === 'auth/invalid-email') {
-              console.log('That email address is invalid!');
-            }
-        
-            console.error(error);
-          });
     }
-
     const handleMessageButtonClick = () => {
         navigation.reset({
             routes: [{name: 'SignIn'}]
@@ -59,7 +47,19 @@ export default () => {
               marginBottom: 15,
              alignItems: 'center',
              }}
-             placeholder="Digite seu e-mail"
+             placeholder="Digite seu nome"
+             onChangeText={setName}
+             />
+             <TextInput
+             style={{
+              backgroundColor: '#53bda2',
+              width: '100%',
+              height: 60,
+              borderRadius: 30,
+              marginBottom: 15,
+             alignItems: 'center',
+             }}
+             placeholder="Digite seu email"
              onChangeText={setEmail}
              />
              <TextInput

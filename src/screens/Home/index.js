@@ -1,28 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, SafeAreaView, Image, ScrollView, StyleSheet, Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import { Container } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import COLORS from "../../consts/colors";
-import plants from "../../consts/plants";
+import { api } from "../../Services/Api";
 
 const {width} = Dimensions.get('window');
 
 
-const Card = ({plant}) => {
 
+const Card = ({products}) => {
+
+   
     const navigation = useNavigation();
     
     return (
         
-    <TouchableOpacity  onPress={()=>navigation.navigate("Details",plant)}>
+    <TouchableOpacity  onPress={()=>navigation.navigate("Details",products)}>
     <View style={{ borderRadius:10,marginHorizontal:2,marginBottom:5,padding:15, height:200, backgroundColor: COLORS.green, width: width/2-15, }}>
         <View style={{height:100, alignItems: 'center'}}>
             <Image 
             style={{flex:1, resizeMode: 'contain'}} 
-            source={plant.img} 
+            source={{uri: products.ImageProduct.path}} 
             />
         </View>
-        <Text style={{fontWeight:'bold', fontSize:17, marginTop:10,  }}>{plant.name}</Text>
+        <Text style={{fontWeight:'bold', fontSize:17, marginTop:10, textTransform:"capitalize"}}>{products.name}</Text>
         <View 
         style={{
             flexDirection: "row", 
@@ -30,8 +32,8 @@ const Card = ({plant}) => {
             marginTop: 5,
             
         }}>
-         <Text style={{fontWeight:'bold', fontSize:15, marginTop:10 }}>${plant.price}</Text>
-         <Text style={{fontWeight: 'bold', fontSize:15, marginTop:10 }}>{plant.about}</Text>
+         <Text style={{fontWeight:'bold', fontSize:15, marginTop:10, textTransform:"capitalize" }}>${products.value}</Text>
+         <Text style={{fontWeight: 'bold', fontSize:15, marginTop:10 }}>Valor/Un</Text>
          <View style={{
             height:30,
             width:30,
@@ -48,6 +50,12 @@ const Card = ({plant}) => {
     );
 };
 const Home = ({}) => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        api.get("/products").then(response => {setProducts(response.data)})
+    }, []);
+
     return (
         <Container>
             <ScrollView
@@ -105,8 +113,8 @@ const Home = ({}) => {
                           marginTop: 10,
                           paddingBottom: 50,  
                        }}
-                       data={plants} 
-                       renderItem={({item}) => <Card plant={item} />}
+                       data={products} 
+                       renderItem={({item}) => <Card products={item} />}
                      />
                      </ScrollView>
                     </View>
