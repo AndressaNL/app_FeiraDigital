@@ -20,8 +20,10 @@ export function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSignClick = async () => {
+    setLoading(true);
     api
       .post('/buyer', {
         name,
@@ -31,6 +33,10 @@ export function SignUp() {
       .then(response => {
         console.log(response.data);
         Alert.alert('Cadastro', 'Cadastro realizado com sucesso!');
+        setLoading(false);
+        navigation.reset({
+          routes: [{name: 'SignIn'}],
+        });
       });
   };
 
@@ -57,6 +63,7 @@ export function SignUp() {
             borderRadius: 30,
             marginBottom: 15,
             alignItems: 'center',
+            paddingLeft: 20,
           }}
           placeholder="Digite seu nome"
           onChangeText={setName}
@@ -69,6 +76,7 @@ export function SignUp() {
             borderRadius: 30,
             marginBottom: 15,
             alignItems: 'center',
+            paddingLeft: 20,
           }}
           placeholder="Digite seu email"
           onChangeText={setEmail}
@@ -81,12 +89,15 @@ export function SignUp() {
             borderRadius: 30,
             marginBottom: 15,
             alignItems: 'center',
+            paddingLeft: 20,
           }}
           placeholder="Digite sua senha"
           onChangeText={setPassword}
         />
         <CustomButton onPress={handleSignClick}>
-          <CustomButtonText>CADASTRAR</CustomButtonText>
+          <CustomButtonText>
+            {loading === true ? 'Carregando...' : 'Cadastrar'}
+          </CustomButtonText>
         </CustomButton>
       </InputArea>
 

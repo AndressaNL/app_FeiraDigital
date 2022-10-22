@@ -5,6 +5,8 @@ import {Dimensions, Image, Text, TouchableOpacity, View} from 'react-native';
 import COLORS from '../../consts/colors';
 const {width} = Dimensions.get('window');
 
+import Tomate from '../../assets/Tomate.png';
+
 export function Card({products}) {
   const navigation = useNavigation();
   return (
@@ -16,14 +18,11 @@ export function Card({products}) {
           marginBottom: 5,
           padding: 15,
           height: 200,
-          backgroundColor: COLORS.green,
-          width: width / 2 - 5,
+          backgroundColor: '#DFEDE9',
+          width: width / 2 - 20,
         }}>
         <View style={{height: 100, alignItems: 'center'}}>
-          <Image
-            style={{flex: 1, resizeMode: 'contain'}}
-            source={{uri: products.ImageProduct[0].path}}
-          />
+          <Image style={{width: 100, height: 100}} source={Tomate} />
         </View>
         <Text
           style={{
@@ -31,6 +30,7 @@ export function Card({products}) {
             fontSize: 17,
             marginTop: 10,
             textTransform: 'capitalize',
+            color: '#343F4B',
           }}>
           {products.name}
         </Text>
@@ -46,10 +46,17 @@ export function Card({products}) {
               fontSize: 15,
               marginTop: 10,
               textTransform: 'capitalize',
+              color: '#343F4B',
             }}>
             R$ {products.value}
           </Text>
-          <Text style={{fontWeight: 'bold', fontSize: 15, marginTop: 10}}>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              color: '#343F4B',
+              fontSize: 15,
+              marginTop: 10,
+            }}>
             Valor/Un
           </Text>
           <View
