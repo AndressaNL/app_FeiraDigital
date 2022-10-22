@@ -2,10 +2,10 @@ import React, {useContext} from 'react';
 import {AuthContext} from '../contexts/AuthContext';
 
 import {AppRoutes} from './AppRoutes';
-import {MainTab} from './MainTab';
+import {MainStack} from './MainStack';
 
 export function Routes() {
   const {signed} = useContext(AuthContext);
 
-  return signed ? <MainTab /> : <AppRoutes />;
+  return signed ? <MainStack /> : <AppRoutes />;
 }
