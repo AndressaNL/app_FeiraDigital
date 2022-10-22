@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 import colors from '../../assets/colors';
+import COLORS from '../../consts/colors';
 
 const SettingsComponent = ({settingsOptions}) => {
   return (
@@ -15,20 +16,19 @@ const SettingsComponent = ({settingsOptions}) => {
               paddingBottom: 20,
               paddingTop: 20,
             }}>
-            <Text style={{fontSize: 17}}>{title}</Text>
+            <Text style={{fontSize: 17, color: '#666'}}>{title}</Text>
             {subTitle && (
               <Text
                 style={{
                   fontSize: 14,
                   opacity: 0.5,
-                  color: colors.grey,
                   paddingTop: 5,
                 }}>
                 {subTitle}
               </Text>
             )}
           </View>
-          <View style={{height: 1.0, backgroundColor: colors.grey}} />
+          <View style={{height: 1.0, backgroundColor: COLORS.green}} />
         </TouchableOpacity>
       ))}
     </ScrollView>

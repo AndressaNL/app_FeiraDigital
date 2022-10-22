@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {Image} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {ActivityIndicator, Alert, Image, TextInput} from 'react-native';
+import {AuthContext} from '../../contexts/AuthContext';
 
 import {
   Container,
@@ -12,16 +13,23 @@ import {
   SignMessageButtonTextBold,
 } from './styles';
 
-import SignInput from '../../components/SignInput';
-import SignInput2 from '../../components/SignInput2';
-
 export function SignIn() {
+  const {signIn} = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const navigation = useNavigation();
 
-  const handleSignClick = () => {
-    navigation.reset({
-      routes: [{name: 'MainTab'}],
-    });
+  const handleSignClick = async () => {
+    setLoading(true);
+    if (email === '' || password === '') {
+      Alert.alert('Login', 'Por favor preencha todos os dados');
+      setLoading(false);
+    } else {
+      await signIn({email, password});
+      setLoading(false);
+    }
   };
 
   const handleMessageButtonClick = () => {
@@ -39,11 +47,39 @@ export function SignIn() {
       />
 
       <InputArea>
-        <SignInput />
-        <SignInput2 />
+        <TextInput
+          style={{
+            backgroundColor: '#53bda2',
+            width: '100%',
+            height: 60,
+            borderRadius: 30,
+            marginBottom: 15,
+            alignItems: 'center',
+            paddingLeft: 20,
+          }}
+          placeholder="Digite seu email"
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={{
+            backgroundColor: '#53bda2',
+            width: '100%',
+            height: 60,
+            borderRadius: 30,
+            marginBottom: 15,
+            alignItems: 'center',
+            paddingLeft: 20,
+          }}
+          placeholder="Digite sua senha"
+          onChangeText={setPassword}
+        />
 
         <CustomButton onPress={handleSignClick}>
-          <CustomButtonText>LOGIN</CustomButtonText>
+          {loading === true ? (
+            <ActivityIndicator size="large" color="#000" />
+          ) : (
+            <CustomButtonText>LOGIN</CustomButtonText>
+          )}
         </CustomButton>
       </InputArea>
 
