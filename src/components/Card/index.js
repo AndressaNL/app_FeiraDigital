@@ -9,8 +9,9 @@ import Tomate from '../../assets/Tomate.png';
 
 export function Card({products}) {
   const navigation = useNavigation();
+  
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details', products)}>
+    <TouchableOpacity onPress={() => navigation.navigate("Details", products)}>
       <View
         style={{
           borderRadius: 10,
@@ -22,7 +23,7 @@ export function Card({products}) {
           width: width / 2 - 20,
         }}>
         <View style={{height: 100, alignItems: 'center'}}>
-          <Image style={{width: 100, height: 100}} source={Tomate} />
+          <Image style={{width: 100, height: 100}} source={{uri:"https:www"}} />
         </View>
         <Text
           style={{
