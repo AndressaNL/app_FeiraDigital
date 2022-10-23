@@ -70,6 +70,7 @@ export function SignIn() {
             alignItems: 'center',
             paddingLeft: 20,
           }}
+          secureTextEntry={true}
           placeholder="Digite sua senha"
           onChangeText={setPassword}
         />
