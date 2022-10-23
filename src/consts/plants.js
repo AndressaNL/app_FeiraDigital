@@ -4,7 +4,7 @@ const plants = [
     name: 'Tomate',
     price: '6.00',
     img: require('../assets/Tomate.png'),
-    about: 'Valor/Kg',
+    about: 'Valor/Un',
   },
 
   {

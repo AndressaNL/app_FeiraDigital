@@ -7,7 +7,6 @@ import {CustomTabBar} from '../components/CustomTabBar';
 import {Cart} from '../screens/Cart';
 import {Home} from '../screens/Home';
 import {Notifications} from '../screens/Notifications';
-import {Requests} from '../screens/Requests';
 import {Search} from '../screens/Search';
 import {Settings} from '../screens/Settings';
 
@@ -42,8 +41,18 @@ export function MainTab() {
           };
         }}
       />
-      <Tab.Screen name="Requests" component={Requests} />
-      <Tab.Screen name="Cart" component={Cart} />
+      <Tab.Screen 
+       name="Cart"
+       component={Cart} 
+       options={() => {
+         return {
+           title: 'Carrinho',
+           headerRight: () => (
+             <Image source={require('../assets/LOGO8.png')} />
+           ),
+         };
+       }}
+       />
       <Tab.Screen name="Notifications" component={Notifications} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>

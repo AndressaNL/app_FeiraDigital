@@ -14,6 +14,7 @@ const TabItem = styled.TouchableOpacity`
 `;
 
 export function CustomTabBar({state, navigation}) {
+  
   const goTo = screenName => {
     navigation.navigate(screenName);
   };
@@ -34,14 +35,8 @@ export function CustomTabBar({state, navigation}) {
       </TabItem>
       <TabItem onPress={() => goTo('Cart')}>
         <Image
-          style={{opacity: state.index === 3 ? 1 : 0.5}}
-          source={require('../assets/carrinho1.png')}
-        />
-      </TabItem>
-      <TabItem onPress={() => goTo('Requests')}>
-        <Image
           style={{opacity: state.index === 2 ? 1 : 0.5}}
-          source={require('../assets/Pedidos.png')}
+          source={require('../assets/carrinho1.png')}
         />
       </TabItem>
       <TabItem onPress={() => goTo('Notifications')}>

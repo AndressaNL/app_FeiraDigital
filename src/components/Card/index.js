@@ -4,13 +4,12 @@ import {Dimensions, Image, Text, TouchableOpacity, View} from 'react-native';
 
 import COLORS from '../../consts/colors';
 const {width} = Dimensions.get('window');
-
 import Tomate from '../../assets/Tomate.png';
 
 export function Card({products}) {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details', products)}>
+    <TouchableOpacity onPress={() => navigation.navigate("Details", products)}>
       <View
         style={{
           borderRadius: 10,
