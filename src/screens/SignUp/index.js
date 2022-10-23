@@ -23,21 +23,25 @@ export function SignUp() {
   const [loading, setLoading] = useState(false);
 
   const handleSignClick = async () => {
-    setLoading(true);
-    api
-      .post('/buyer', {
-        name,
-        email,
-        password,
-      })
-      .then(response => {
-        console.log(response.data);
-        Alert.alert('Cadastro', 'Cadastro realizado com sucesso!');
-        setLoading(false);
-        navigation.reset({
-          routes: [{name: 'SignIn'}],
+    if (name === '' || email === '' || password === '') {
+      Alert.alert('Cadastro', 'Por favor preencha todos os campos.');
+    } else {
+      setLoading(true);
+      api
+        .post('/buyer', {
+          name,
+          email,
+          password,
+        })
+        .then(response => {
+          console.log(response.data);
+          Alert.alert('Cadastro', 'Cadastro realizado com sucesso!');
+          setLoading(false);
+          navigation.reset({
+            routes: [{name: 'SignIn'}],
+          });
         });
-      });
+    }
   };
 
   const handleMessageButtonClick = () => {

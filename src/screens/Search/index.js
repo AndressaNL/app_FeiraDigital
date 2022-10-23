@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, SafeAreaView, TextInput, View} from 'react-native';
 
-import COLORS from '../../consts/colors';
 import {Container} from './styles';
 
 export function Search() {
@@ -31,10 +30,10 @@ export function Search() {
             />
             <TextInput
               placeholder="Search"
+              placeholderTextColor="#343F4B"
               style={{
                 fontSize: 16,
                 fontWeight: 'bold',
-                color: COLORS.dark,
                 flex: 1,
               }}
             />
