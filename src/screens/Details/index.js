@@ -41,7 +41,7 @@ export function Details({navigation, route}) {
       </View>
       <View style={style.imageContainer}>
         <Image
-          source={{uri: plant.ImageProduct[0].path}}
+          source={{uri: plant.img}}
           style={{resizeMode: 'contain', flex: 1}}
         />
       </View>
