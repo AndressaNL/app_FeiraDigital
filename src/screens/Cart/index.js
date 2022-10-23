@@ -50,10 +50,10 @@ export function Cart() {
          marginVertical: 15,
         }}>
           <Text style={{fontSize: 18, fontWeight: 'bold'}}>Total da compra </Text>
-          <Text style={{fontSize: 18, fontWeight: 'bold'}}>R$50</Text>
+          <Text style={{fontSize: 18, fontWeight: 'bold'}}>R$20</Text>
         </View> 
         <View style={{ width: 370,height: 50,backgroundColor: '#019972',justifyContent: 'center',alignItems: 'center', borderRadius: 30,}} >
-           <Text style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}  onPress={() => goTo('Cart')}> 
+           <Text style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}> 
                 Comprar pelo WhatsApp
               </Text>
         </View>

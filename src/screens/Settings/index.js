@@ -44,7 +44,7 @@ export function Settings() {
             style={{
               color: '#fff',
             }}>
-            SAIR
+            Encerrar sessão
           </Text>
         </TouchableOpacity>
       </View>
