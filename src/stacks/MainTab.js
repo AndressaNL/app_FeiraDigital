@@ -53,8 +53,30 @@ export function MainTab() {
          };
        }}
        />
-      <Tab.Screen name="Notifications" component={Notifications} />
-      <Tab.Screen name="Settings" component={Settings} />
+       <Tab.Screen 
+       name="Notifications"
+       component={Notifications} 
+       options={() => {
+         return {
+           title: 'Notificações',
+           headerRight: () => (
+             <Image source={require('../assets/LOGO8.png')} />
+           ),
+         };
+       }}
+       />
+       <Tab.Screen 
+       name="Settings"
+       component={Settings} 
+       options={() => {
+         return {
+           title: 'Configurações',
+           headerRight: () => (
+             <Image source={require('../assets/LOGO8.png')} />
+           ),
+         };
+       }}
+       />
     </Tab.Navigator>
   );
 }

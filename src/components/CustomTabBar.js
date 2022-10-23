@@ -41,13 +41,13 @@ export function CustomTabBar({state, navigation}) {
       </TabItem>
       <TabItem onPress={() => goTo('Notifications')}>
         <Image
-          style={{opacity: state.index === 4 ? 1 : 0.5}}
+          style={{opacity: state.index === 3 ? 1 : 0.5}}
           source={require('../assets/bell.png')}
         />
       </TabItem>
       <TabItem onPress={() => goTo('Settings')}>
         <Image
-          style={{opacity: state.index === 5 ? 1 : 0.5}}
+          style={{opacity: state.index === 4 ? 1 : 0.5}}
           source={require('../assets/profile.png')}
         />
       </TabItem>
