@@ -11,8 +11,14 @@ import {
 } from 'react-native';
 
 import COLORS from '../../consts/colors';
+import Tomate from '../../assets/Tomate.png';
 
-export function Details({navigation, route}) {
+export function Details({navigation,route}) {
+
+  const goTo = screenName => {
+    navigation.navigate(screenName);
+  };
+
   const [addProducts, setAddProducts] = useState(1);
 
   const handleAddProducts = () => {
@@ -32,6 +38,7 @@ export function Details({navigation, route}) {
       routes: [{name: 'MainTab'}],
     });
   };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
       <View style={style.header}>
@@ -41,7 +48,7 @@ export function Details({navigation, route}) {
       </View>
       <View style={style.imageContainer}>
         <Image
-          source={{uri: plant.img}}
+          source={Tomate}
           style={{resizeMode: 'contain', flex: 1}}
         />
       </View>
@@ -79,14 +86,14 @@ export function Details({navigation, route}) {
                 fontWeight: 'bold',
                 fontSize: 16,
               }}>
-              ${plant.price}
+              ${plant.value}
             </Text>
           </View>
         </View>
         <View style={{paddingHorizontal: 20, marginTop: 15}}>
           <Text style={{fontSize: 20, fontWeight: 'bold'}}>About</Text>
           <Text style={{marginTop: 20, fontSize: 16, lineHeight: 22}}>
-            {plant.about}
+            {plant.about} Valor por unidade
           </Text>
           <View
             style={{
@@ -117,10 +124,8 @@ export function Details({navigation, route}) {
               </View>
             </View>
             <View style={style.buyBtn}>
-              <Text
-                style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}>
-                {' '}
-                Buy
+              <Text style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}  onPress={() => goTo('Cart')}> 
+                Adicionar
               </Text>
             </View>
           </View>
@@ -148,7 +153,7 @@ const style = StyleSheet.create({
   },
   detailsContainer: {
     flex: 0.55,
-    backgroundColor: COLORS.green,
+    backgroundColor: '#DFEDE9',
     marginHorizontal: 7,
     marginBottom: 7,
     borderRadius: 20,
