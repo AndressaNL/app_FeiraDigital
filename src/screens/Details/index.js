@@ -10,11 +10,10 @@ import {
   View,
 } from 'react-native';
 
-import COLORS from '../../consts/colors';
 import Tomate from '../../assets/Tomate.png';
+import COLORS from '../../consts/colors';
 
-export function Details({navigation,route}) {
-
+export function Details({navigation, route}) {
   const goTo = screenName => {
     navigation.navigate(screenName);
   };
@@ -47,10 +46,7 @@ export function Details({navigation,route}) {
         </TouchableOpacity>
       </View>
       <View style={style.imageContainer}>
-        <Image
-          source={Tomate}
-          style={{resizeMode: 'contain', flex: 1}}
-        />
+        <Image source={Tomate} style={{resizeMode: 'contain', flex: 1}} />
       </View>
       <View style={style.detailsContainer}>
         <View
@@ -60,7 +56,10 @@ export function Details({navigation,route}) {
             alignItems: 'flex-end',
           }}>
           <View style={style.line} />
-          <Text style={{fontSize: 18, fontWeight: 'bold'}}> Happy farm</Text>
+          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#343F4B'}}>
+            {' '}
+            Happy farm
+          </Text>
         </View>
         <View
           style={{
@@ -75,6 +74,7 @@ export function Details({navigation,route}) {
               fontSize: 22,
               fontWeight: 'bold',
               textTransform: 'capitalize',
+              color: '#343F4B',
             }}>
             {plant.name}
           </Text>
@@ -85,14 +85,23 @@ export function Details({navigation,route}) {
                 color: COLORS.white,
                 fontWeight: 'bold',
                 fontSize: 16,
+                color: '#fff',
               }}>
               ${plant.value}
             </Text>
           </View>
         </View>
         <View style={{paddingHorizontal: 20, marginTop: 15}}>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>About</Text>
-          <Text style={{marginTop: 20, fontSize: 16, lineHeight: 22}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#343F4B'}}>
+            About
+          </Text>
+          <Text
+            style={{
+              marginTop: 20,
+              fontSize: 16,
+              lineHeight: 22,
+              color: '#343F4B',
+            }}>
             {plant.about} Valor por unidade
           </Text>
           <View
@@ -114,6 +123,7 @@ export function Details({navigation,route}) {
                   fontSize: 20,
                   marginHorizontal: 10,
                   fontWeight: 'bold',
+                  color: '#343F4B',
                 }}>
                 {addProducts}
               </Text>
@@ -124,7 +134,9 @@ export function Details({navigation,route}) {
               </View>
             </View>
             <View style={style.buyBtn}>
-              <Text style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}  onPress={() => goTo('Cart')}> 
+              <Text
+                style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}
+                onPress={() => goTo('Cart')}>
                 Adicionar
               </Text>
             </View>
@@ -187,6 +199,7 @@ const style = StyleSheet.create({
   borderBtnText: {
     fontWeight: 'bold',
     fontSize: 32,
+    color: '#343F4B',
   },
   buyBtn: {
     width: 150,
