@@ -14,7 +14,7 @@ export function Preload() {
       if (token) {
         //validar o token
       } else {
-        navigation.navigate('SignIn');
+        navigation.navigate('Usertype');
       }
     };
     checkToken();

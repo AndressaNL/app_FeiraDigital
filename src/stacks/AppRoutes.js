@@ -4,12 +4,14 @@ import React from 'react';
 import {Preload} from '../screens/Preload';
 import {SignIn} from '../screens/SignIn';
 import {SignUp} from '../screens/SignUp';
+import {Usertype} from '../screens/Usertype';
 
 const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
   return (
     <Stack.Navigator initialRouteName="Preload" screenOptions={screenOptions}>
+      <Stack.Screen name="Usertype" component={Usertype} />
       <Stack.Screen name="Preload" component={Preload} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
