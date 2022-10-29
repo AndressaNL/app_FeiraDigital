@@ -31,6 +31,10 @@ export function SignInProducer() {
   //   }
   // };
 
+  const handleRegisterProduct = () => {
+    navigation.navigate('Products');
+  };
+
   const handleMessageButtonClick = () => {
     navigation.reset({
       routes: [{name: 'SignUpProducer'}],
@@ -74,7 +78,7 @@ export function SignInProducer() {
           onChangeText={setPassword}
         />
 
-        <CustomButton>
+        <CustomButton onPress={handleRegisterProduct}>
           {loading === true ? (
             <ActivityIndicator size="large" color="#000" />
           ) : (

@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 
 import {Preload} from '../screens/Preload';
+import {Products} from '../screens/Producer/Products';
 import {SignInProducer} from '../screens/Producer/SignIn';
 import {SignUpProducer} from '../screens/Producer/SignUp';
 import {SignIn} from '../screens/SignIn';
@@ -19,6 +20,7 @@ export function AppRoutes() {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignUpProducer" component={SignUpProducer} />
       <Stack.Screen name="SignInProducer" component={SignInProducer} />
+      <Stack.Screen name="Products" component={Products} />
     </Stack.Navigator>
   );
 }
