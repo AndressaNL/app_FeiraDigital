@@ -1,45 +1,22 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext, useState} from 'react';
-import {ActivityIndicator, Alert, Image, TextInput} from 'react-native';
-import {AuthContext} from '../../contexts/AuthContext';
+import React, {useState} from 'react';
+import {ActivityIndicator, Image} from 'react-native';
 
-import {
-  Container,
-  CustomButton,
-  CustomButtonText,
-  InputArea,
-  SignMessageButton,
-  SignMessageButtonText,
-  SignMessageButtonTextBold,
-} from './styles';
+import {Container, CustomButton, CustomButtonText, InputArea} from './styles';
 
 export function Usertype() {
-  const {signIn} = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
-
-  const handleSignClick = async () => {
-    setLoading(true);
-    if (email === '' || password === '') {
-      Alert.alert('Login', 'Por favor preencha todos os dados');
-      setLoading(false);
-    } else {
-      await signIn({email, password});
-      setLoading(false);
-    }
-  };
 
   const handleSignClickUser = () => {
     navigation.reset({
       routes: [{name: 'SignIn'}],
     });
   };
-  const handleSignClickPr = () => {
+  const handleSignClickProducer = () => {
     navigation.reset({
-      routes: [{name: 'SignIn'}],
+      routes: [{name: 'SignInProducer'}],
     });
   };
 
@@ -51,21 +28,21 @@ export function Usertype() {
         source={require('../../assets/Logo4.png')}
       />
 
-      <InputArea style={{}}>
-       <CustomButton onPress={handleSignClickPr}>
+      <InputArea>
+        <CustomButton onPress={handleSignClickProducer}>
           {loading === true ? (
             <ActivityIndicator size="large" color="#000" />
           ) : (
-            <CustomButtonText>Produtor</CustomButtonText>
+            <CustomButtonText>Sou Produtor</CustomButtonText>
           )}
         </CustomButton>
-        </InputArea>
-        <InputArea>
+      </InputArea>
+      <InputArea>
         <CustomButton onPress={handleSignClickUser}>
           {loading === true ? (
             <ActivityIndicator size="large" color="#000" />
           ) : (
-            <CustomButtonText>Comprador</CustomButtonText>
+            <CustomButtonText>Sou Comprador</CustomButtonText>
           )}
         </CustomButton>
       </InputArea>
