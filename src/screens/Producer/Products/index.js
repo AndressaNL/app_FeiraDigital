@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Image, Text, TextInput} from 'react-native';
 
@@ -6,14 +5,6 @@ import {Container, CustomButton, CustomButtonText, InputArea} from './styles';
 
 export function Products() {
   const [loading, setLoading] = useState(false);
-
-  const navigation = useNavigation();
-
-  // const handleMessageButtonClick = () => {
-  //   navigation.reset({
-  //     routes: [{name: 'SignInProducer'}],
-  //   });
-  // };
 
   return (
     <Container>
@@ -70,11 +61,6 @@ export function Products() {
           </CustomButtonText>
         </CustomButton>
       </InputArea>
-
-      {/* <SignMessageButton onPress={handleMessageButtonClick}>
-        <SignMessageButtonText>Já possui uma conta?</SignMessageButtonText>
-        <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
-      </SignMessageButton> */}
     </Container>
   );
 }
