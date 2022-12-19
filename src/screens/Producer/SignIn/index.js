@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {ActivityIndicator, Image, TextInput} from 'react-native';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 import {
   Container,
@@ -13,23 +14,23 @@ import {
 } from './styles';
 
 export function SignInProducer() {
-  // const {signIn} = useContext(AuthContext);
+  const {signInProducer} = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
-  // const handleSignClick = async () => {
-  //   setLoading(true);
-  //   if (email === '' || password === '') {
-  //     Alert.alert('Login', 'Por favor preencha todos os dados');
-  //     setLoading(false);
-  //   } else {
-  //     await signIn({email, password});
-  //     setLoading(false);
-  //   }
-  // };
+  const handleSignClick = async () => {
+    setLoading(true);
+    if (email === '' || password === '') {
+      Alert.alert('Login', 'Por favor preencha todos os dados');
+      setLoading(false);
+    } else {
+      await signInProducer({email, password});
+      setLoading(false);
+    }
+  };
 
   const handleRegisterProduct = () => {
     navigation.navigate('Products');
@@ -78,7 +79,7 @@ export function SignInProducer() {
           onChangeText={setPassword}
         />
 
-        <CustomButton onPress={handleRegisterProduct}>
+        <CustomButton onPress={handleSignClick}>
           {loading === true ? (
             <ActivityIndicator size="large" color="#000" />
           ) : (

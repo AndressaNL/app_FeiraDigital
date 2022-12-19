@@ -1,10 +1,33 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Image, Text, TextInput} from 'react-native';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { api } from '../../../Services/Api';
 
 import {Container, CustomButton, CustomButtonText, InputArea} from './styles';
 
 export function Products() {
+  const {user} = useContext(AuthContext)
   const [loading, setLoading] = useState(false);
+
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [value, setValue] = useState("");
+
+  async function handleRegisterProduct() {
+    const formData = new FormData();
+
+    formData.append("name", name)
+    formData.append("amount", amount)
+    formData.append("value", value)
+
+    const response = await api.post(`/producer/${user.id}/product`, formData,{
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+
+    console.log(response)
+  }
 
   return (
     <Container>
@@ -29,6 +52,7 @@ export function Products() {
             paddingLeft: 20,
           }}
           placeholder="Digite o nome do produto"
+          onChangeText={setName}
         />
         <TextInput
           style={{
@@ -41,6 +65,7 @@ export function Products() {
             paddingLeft: 20,
           }}
           placeholder="Digite a quantidade"
+          onChangeText={setAmount}
         />
         <TextInput
           style={{
@@ -53,6 +78,7 @@ export function Products() {
             paddingLeft: 20,
           }}
           placeholder="Digite o valor"
+          onChangeText={setValue}
         />
 
         <CustomButton>

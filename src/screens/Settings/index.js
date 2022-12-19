@@ -39,23 +39,7 @@ export function Settings() {
           flex: 1,
           backgroundColor: '#fff',
         }}>
-        <TouchableOpacity
-          onPress={handleSignClickPr}
-          style={{
-            backgroundColor: '#019972',
-            height: 50,
-            borderRadius: 10,
-            width: 250,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text
-            style={{
-              color: '#fff',
-            }}>
-            Cadastrar produtos
-          </Text>
-        </TouchableOpacity>
+
       </View>
 
       <View

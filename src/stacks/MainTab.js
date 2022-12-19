@@ -7,8 +7,11 @@ import {CustomTabBar} from '../components/CustomTabBar';
 import {Cart} from '../screens/Cart';
 import {Home} from '../screens/Home';
 import {Notifications} from '../screens/Notifications';
+import { Products } from '../screens/Producer/Products';
 import {Search} from '../screens/Search';
 import {Settings} from '../screens/Settings';
+
+
 
 const Tab = createBottomTabNavigator();
 
@@ -77,7 +80,36 @@ export function MainTab() {
          };
        }}
        />
+
+      <Tab.Screen 
+       name="Add"
+       component={Products} 
+       options={() => {
+         return {
+           title: 'Add Produtos',
+           headerRight: () => (
+             <Image source={require('../assets/LOGO8.png')} />
+           ),
+         };
+       }}
+       />
+
+
+<Tab.Screen 
+       name="Add+"
+       component={Products} 
+       options={() => {
+         return {
+           title: 'Add Produtos',
+           headerRight: () => (
+             <Image source={require('../assets/LOGO8.png')} />
+           ),
+         };
+       }}
+       />
     </Tab.Navigator>
+
+    
   );
 }
 
