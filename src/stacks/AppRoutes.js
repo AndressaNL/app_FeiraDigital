@@ -19,7 +19,7 @@ export function AppRoutes() {
       <Stack.Screen name="Preload" component={Preload} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="MainTab" component={MainTab} />
+      {/* <Stack.Screen name="MainTab" component={MainTab} /> */}
       <Stack.Screen name="SignUpProducer" component={SignUpProducer} />
       <Stack.Screen name="SignInProducer" component={SignInProducer} />
       <Stack.Screen name="Products" component={Products} />
