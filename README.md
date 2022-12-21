@@ -55,7 +55,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - **[React](https://pt-br.reactjs.org/)**
 - **[React Native](https://reactnative.dev/)**
-- **[Axios](hhttps://axios-http.com/ptbr/docs/intro)**
+- **[Axios](https://axios-http.com/ptbr/docs/intro)**
 
 ## 📝 Licença
 
